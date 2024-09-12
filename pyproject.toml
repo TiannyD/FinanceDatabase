@@ -1,0 +1,67 @@
+[tool.poetry]
+name = "financedatabase"
+version = "2.2.2"
+description = "This is a database of 300.000+ symbols containing Equities, ETFs, Funds, Indices, Currencies, Cryptocurrencies and Money Markets."
+license = "MIT"
+authors = ["Jeroen Bouma"]
+packages = [
+    { include = "financedatabase" },
+]
+readme = "README.md"
+homepage = "https://www.jeroenbouma.com/"
+repository = "https://github.com/JerBouma/FinanceDatabase"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10, <3.13"
+financetoolkit = "^1"
+pandas = {extras = ["computation", "performance", "plot"], version = "^2.1.0"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.2"
+pylint = "2.17.0"
+codespell = "^2.2.4"
+black = ">=23.1,<25.0"
+bandit = "^1.7.0"
+pytest-mock = "^3.6.1"
+pytest-recording = "^0.12.0"
+pytest-cov = "^3.0.0"
+ruff = "^0.0.256"
+pytest-timeout = "^2.1.0"
+pytest-recorder = "^0.2.1"
+
+[build-system]
+requires = ["setuptools<65.5.0", "poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 122
+select = ["E", "W", "F", "Q", "W", "S", "UP", "I", "PD", "SIM", "PLC", "PLE", "PLR", "PLW"]
+ignore = ["S105", "S106", "S107", "PLR0913"]
+
+[tool.pylint]
+max-line-length = 122
+disable = ["R0913", "W1514", "R0911", "R0912", "R0915", "R0801", "W0221", "C0103"]
+
+[tool.ruff.isort]
+combine-as-imports = true
+force-wrap-aliases = true
+
+[tool.isort]
+profile = "black"
+line_length = 122
+skip_gitignore = true
+combine_as_imports = true
+
+[tool.codespell]
+ignore-words-list = "zar,profund,basf,applicatio,ser,mone,vie,noteable,basf,beter"
+skip = '*.json,./.git,*.csv,pyproject.toml,*.ipynb,poetry.lock'
